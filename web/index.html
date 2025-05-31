@@ -31,8 +31,56 @@
 
   <title>my_location_flutter</title>
   <link rel="manifest" href="manifest.json">
+  <style>
+    /* Center the loader */
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #f0f0f0;
+    }
+  
+    .loader {
+      border: 8px solid #f3f3f3;
+      border-top: 8px solid #3498db;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      animation: spin 1s linear infinite;
+    }
+  
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+  
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  
+    /* Hide loader when Flutter app loads */
+    .flutter-app-loaded .loader {
+      display: none;
+    }
+  </style>
 </head>
 <body>
+  <!-- Custom loader -->
+  <div class="loader"></div>
+  
+  <!-- Flutter app container -->
+  <div id="flutter_app"></div>
+  
+  <script>
+    // Detect when Flutter app is fully loaded
+    window.addEventListener('flutter-first-frame', () => {
+      document.body.classList.add('flutter-app-loaded');
+    });
+  </script>
+  
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

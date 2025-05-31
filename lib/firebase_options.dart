@@ -54,11 +54,12 @@ class DefaultFirebaseOptions {
 
   static const FirebaseOptions web = FirebaseOptions(
     apiKey: 'AIzaSyC4ieP-MLWT--6an_h7qEfq23hxTDanDbU',
-    appId: '1:772777590175:web:ee125fc065c5e1f29691aa',
+    appId: '1:772777590175:web:c8ab61ec82d0d7999691aa',
     messagingSenderId: '772777590175',
     projectId: 'location-check-a0ea7',
     authDomain: 'location-check-a0ea7.firebaseapp.com',
     storageBucket: 'location-check-a0ea7.firebasestorage.app',
-    measurementId: 'G-40P0Z6C98G',
+    measurementId: 'G-ER54VXDCCE',
   );
+
 }

